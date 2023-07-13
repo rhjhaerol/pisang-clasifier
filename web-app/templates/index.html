@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pisang Classifier</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+    <img src="../static/gambar/leaf 1.png" alt="">
+    <img src="../static/gambar/leaf 1.png" alt="">
+    <h1>Deteksi Luka <br> Pada Kulit Pisang</h1>
+    <div class="box">
+        <div class="img-load">
+            <div class="img-show">
+                <img src="{{ img }}" alt="">
+            </div>
+            <form action="/" method="post" enctype="multipart/form-data">
+                <input type="file" id="realinput" name="imagefile" hidden>
+                <button type="button" id="custominput">Pilih gambar</button>
+                <button type="submit">Deteksi gambar</button>
+            </form>
+        </div>
+        <div class="text-result">
+            <span>Nama file</span>
+            {% if not filename %}
+                <p>Gambar belum dipilih</p>
+            {% else %}
+                <p>{{ filename }}</p>
+            {% endif %}
+            <br>
+            <span>Hasil Prediksi</span>
+            {% if not result %}
+                <h2>-</h2>
+            {% else %}
+                <h2>{{ result }}</h2>
+            {% endif %}
+        </div>
+    </div>
+    <script type="text/javascript">
+        const realinput = document.getElementById('realinput');
+        const custominput = document.getElementById('custominput');
+
+        custominput.addEventListener('click', function(){
+            realinput.click();
+        });
+    </script>
+</body>
+</html>
